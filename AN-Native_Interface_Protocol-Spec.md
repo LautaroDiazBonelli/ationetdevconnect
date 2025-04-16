@@ -4,7 +4,7 @@
 |Document Information|.|
 |--- |--- |
 |File:|ATIONet-Native_Interface_Protocol-Spec|
-|Doc Version:|2.7|
+|Doc Version:|3.5|
 |Release Date:|29, March 2021|
 |Author:|ATIONet LLC|
 
@@ -37,16 +37,15 @@
 |3.1|26/09/2023|**Document Update** <br> - Update StatementsHeaderDownload Response| <br>
 |3.2|25/10/2023|**Document Update** <br> - Company inserts update| <br>
 |3.3|06/11/2023|**Document Update** <br> - Company inserts update - Merchants| <br>
-|3.3|18/12/2023|**Document Update** <br> - Company inserts update - Apply Lower Price| <br>
+|3.4|18/12/2023|**Document Update** <br> - Company inserts update - Apply Lower Price| <br>
+|3.5|16/04/2025|**Document Update** <br> - Consumer Card recharges download and new transactions custom fields| <br>
+
+
 
 ## Contents
 
 - [1 Scope](#1-scope)
 	- [1.1 Scope details](#11-scope-details)
- 	- [1.2 Environments](#_toc160812883)
-		- [Test Environment](#_toc160812884)
-		- [Beta Environment](#_toc160812885)
-		- [Productive Environment](#_toc160812886)
 
 - [2 System Interface API](#2-system-interface-api)
 	- [2.1 Interface API Messages](#21-interface-api-messages)
@@ -79,6 +78,7 @@
 		- [7.3.4 Transaction Modifiers Format Response](#734-transaction-modifiers-format-response)
 		- [7.3.5 Transaction Movement ERP Format Response](#735-transaction-movement-erp-format-response)
 	- [7.4 Transacionts Custom Fields Download (POST) – Body Section Format Request](#74-transacionts-custom-fields-download-post--body-section-format-request)
+	- [7.5 Consumer Card Recharge Download](#)
 
 - [8 FastTrack Interface](#8-fasttrack-interface)
 	- [8.1 Action Codes](#81-action-codes)
@@ -102,6 +102,7 @@
 	- [10.7 Company Group Movements Download (POST) – Body Section Format Response](#107-company-group-movements-download-post--body-section-format-response)
 	- [10.8 Sub-Account/Contract Balance Download (POST) – Body Section Format Request](#108-sub-accountcontract-balance-download-post--body-section-format-request)
 	- [10.9 Sub-Account/Contract Balance Download (POST) – Body Section Format Response](#109-sub-accountcontract-balance-download-post--body-section-format-response)
+   
 
 - [11 Inventory and deliveries Downloads](#11-Inventory-and-deliveries-Downloads)
 	- [11.1 Action Codes](#111-Action-Codes)
@@ -204,25 +205,7 @@ Protocol: ATIONet Native Interface API
 
 Version: Version 1.4
 
-<a name="_toc160193608"></a>
-# <a name="_toc160812883"></a>1.2 Environments 
-
-Ationet has multiple environments to ensure to be able to perform the relevant tests at the time of integration. For this reason, Ationet has:
-
-## <a name="_toc160193609"></a><a name="_toc160812884"></a>Test Environment
-This environment is used for development, allowing to test the advances that are generated.
-
-URL Environment: <https://native-test.ationet.com/>v1/interface
-
-## <a name="_toc160193610"></a><a name="_toc160812885"></a>Beta Environment
-It is a more stable environment, which already contains a finalized version. It is used to test the developments in search of errors, prior to their passage to production.
-
-URL Environment: <https://native-beta.ationet.com/>v1/interface
-
-## <a name="_toc160193611"></a><a name="_toc160812886"></a>Productive Environment
-The productive version of Ationet.
-
-URL Environment: <https://native.ationet.com/>v1/interface
+API URI: native.ationet.com/v1/interface
 
 ## 2 System Interface API
 
@@ -1414,6 +1397,42 @@ transactions to download.
 			<p>Program Id(Optional, if included will act as a filter)</p>
 			<p>Date From (Optional, if included will act as a filter)</p>
 			<p>Date To (Optional, if included will act as a filter)</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td rowspan="4">
+			<p>953</p>
+		</td>
+		<td>
+			<p>Title:</p>
+		</td>
+		<td>
+			<p>Consumer Card Recharge Download</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>
+			<p>Function:</p>
+		</td>
+		<td>
+			<p>Downloads all the Consumer Card recharges made in the period</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>
+			<p>Allowed for:</p>
+		</td>
+		<td>
+			<p>NWInterfaceApi and CGInterfaceAPI </p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>
+			<p>Identification:</p>
+		</td>
+		<td>
+			<p>Subscriber Code</p>
+			<p>Merchant ID (Optional)</p>
 		</td>
 	</tr>
 </table>
@@ -7000,6 +7019,49 @@ transactions to download.
 				<p align="left">Vehicle model</p>
 			</td>
 		</tr>
+		
+<tr valign="top">
+			<td>
+				<p align="left">VehicleSubModel</p>
+			</td>
+			<td>
+				<p align="left">50</p>
+			</td>
+			<td>
+				<p align="left">A/N</p>
+			</td>
+			<td>
+				<p align="left">Vehicle SubModel</p>
+			</td>
+		</tr>
+<tr valign="top">
+			<td>
+				<p align="left">VehicleColour</p>
+			</td>
+			<td>
+				<p align="left">50</p>
+			</td>
+			<td>
+				<p align="left">A/N</p>
+			</td>
+			<td>
+				<p align="left">Vehicle Colour</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td>
+				<p align="left">VehicleServiceDescription</p>
+			</td>
+			<td>
+				<p align="left">50</p>
+			</td>
+			<td>
+				<p align="left">A/N</p>
+			</td>
+			<td>
+				<p align="left">Vehicle Service Description</p>
+			</td>
+		</tr>
 		<tr valign="top">
 			<td>
 				<p align="left">VehicleCustomField0</p>
@@ -8879,6 +8941,16 @@ transactions to download.
 	</tbody>
 </table>
 
+### 7.5 Consumer Card Recharge Download (POST) - Body Section
+|Field Name| Size| Tyepe| Description/Field Value(s)|
+|--- |--- |--- |--- |
+|SubscriberCode|3|A/N|Fixed. To be assigned by ATIONet|
+|MerchantID|-|Guid|Merchant Id|
+|DateFrom|19|A/N|From date to filter transactions \ “yyyy/MM/dd hh:mm:ss”|
+|DateTo|19|A/N|To date to filter Transactions \ "yyyy/MM/dd hh:mm"ss"|
+|Paginate|1|N|Indicates if the query result will be paginated
+|PageSize|10|N|Indicates the number of records to download in case the query is paginated|
+|PageNumber|10|N|Indicates the page to download|
 
 ## 8 FastTrack Interface
 
@@ -10962,6 +11034,7 @@ transactions to download.
 |FuelMasterDescription|50|A/N|Fuel master description|
 |CurrencyCode|50|A/N|See identification section|
 |Amount|10|N|The balance of the sub-account|
+
 
 ## 11 Inventory and deliveries Downloads
 The Inventory and Delivery Download messages are POST actions to recover all the
